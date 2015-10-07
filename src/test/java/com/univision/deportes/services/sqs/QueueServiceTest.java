@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.io.IOException;
 
 /**
- * Created by jbjohn on 10/7/15.
  */
 public class QueueServiceTest {
 
