@@ -28,9 +28,11 @@ public class QueueService {
 
     QueueService() throws IOException {
         Properties properties = new Properties();
-        properties.load(this.getClass().getResourceAsStream("awsCredentials.properties"));
+        properties.load(this.getClass().getClassLoader().getResourceAsStream("awsCredentials.properties"));
+
         this.credentials = new BasicAWSCredentials(properties.getProperty("accessKey"), properties.getProperty("secretKey"));
         this.queueUrl = properties.getProperty("queueUrl");
+
         this.sqs = new AmazonSQSClient(this.credentials);
     }
 
