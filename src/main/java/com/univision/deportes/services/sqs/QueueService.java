@@ -11,7 +11,6 @@ import com.univision.deportes.AlertMessage;
 import java.util.List;
 
 /**
- * Created by jbjohn on 10/7/15.
  */
 public class QueueService {
     /**
