@@ -1,3 +1,1 @@
-src/main/resources/awsCredentials.properties
-
-src/main/resources/awsCredentials.properties
+src/main/resources/properties/*.properties
