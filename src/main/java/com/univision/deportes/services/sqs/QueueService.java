@@ -24,12 +24,13 @@ public class QueueService {
 
     private static AmazonSQS sqs;
     private BasicAWSCredentials credentials;
-    private String queueUrl = "https://sqs.us-east-1.amazonaws.com/627758403665/sports-uvn-notification-push-api";
+    private String queueUrl;
 
     QueueService() throws IOException {
         Properties properties = new Properties();
         properties.load(this.getClass().getResourceAsStream("awsCredentials.properties"));
         this.credentials = new BasicAWSCredentials(properties.getProperty("accessKey"), properties.getProperty("secretKey"));
+        this.queueUrl = properties.getProperty("queueUrl");
         this.sqs = new AmazonSQSClient(this.credentials);
     }
 
