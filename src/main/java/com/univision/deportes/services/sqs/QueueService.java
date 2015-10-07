@@ -8,7 +8,9 @@ import com.amazonaws.services.sqs.model.Message;
 import com.amazonaws.services.sqs.model.ReceiveMessageRequest;
 import com.univision.deportes.AlertMessage;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 /**
  */
@@ -24,8 +26,10 @@ public class QueueService {
     private BasicAWSCredentials credentials;
     private String queueUrl = "https://sqs.us-east-1.amazonaws.com/627758403665/sports-uvn-notification-push-api";
 
-    QueueService() {
-        this.credentials = new BasicAWSCredentials("accessKey", "secretKey");
+    QueueService() throws IOException {
+        Properties properties = new Properties();
+        properties.load(this.getClass().getResourceAsStream("awsCredentials.properties"));
+        this.credentials = new BasicAWSCredentials(properties.getProperty("accessKey"), properties.getProperty("secretKey"));
         this.sqs = new AmazonSQSClient(this.credentials);
     }
 
